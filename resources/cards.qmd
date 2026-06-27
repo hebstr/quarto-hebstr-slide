@@ -1,0 +1,13 @@
+The signature panel: a radial-dot background holding white cards with a purple left border.
+
+::: {.dot-panel}
+::::: {.accent-card}
+[Define]{.purple} the panel with `.dot-panel`, the cards with `.accent-card`.
+:::::
+::::: {.accent-card}
+[Stack]{.purple} as many cards as the slide allows; the last drops its bottom margin automatically.
+:::::
+::::: {.accent-card}
+[Reuse]{.purple} this block across decks by copying one `resources/*.qmd` partial.
+:::::
+:::

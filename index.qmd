@@ -1,0 +1,72 @@
+---
+pagetitle: "Pingfan-style Quarto template"
+title: "[A Quarto revealjs template]{.amber}"
+subtitle: "Reproducing the Pingfan Hu slide style"
+author: "<br>**Your Name**<br>Your Institution<br><br>2026"
+title-slide-attributes:
+  data-background-color: "#00254a"
+  class: dark-centered
+  style: "text-align:left;"
+---
+
+## Meet the style {.light-centered .center}
+
+{{< include resources/about.qmd >}}
+
+## Today {.dark-centered .center}
+
+{{< include resources/roadmap.qmd >}}
+
+## The card pattern {.light-centered .center}
+
+{{< include resources/cards.qmd >}}
+
+## Color system {.light-centered .center}
+
+{{< include resources/colors.qmd >}}
+
+## Speech bubbles {.light-centered .center}
+
+{{< include resources/bubbles.qmd >}}
+
+## Code, the macOS way {.light-centered .center}
+
+A normal fenced code block renders as a traffic-light terminal window.
+No JavaScript is involved anywhere; the whole window is pure SCSS.
+Line highlighting steps with `code-line-numbers`.
+
+```python {code-line-numbers="|1-2"}
+def greet(name: str) -> str:
+    return f"Hello, {name}!"
+```
+
+## Incremental reveal {.light-centered .center}
+
+Reveal points one at a time with `{.incremental}` (use sparingly).
+
+::: {.incremental}
+- First, the claim.
+- Then, the evidence.
+- Last, the takeaway.
+:::
+
+## A 4x3 grid {.light-centered .center}
+
+{{< include resources/grid.qmd >}}
+
+## [Section]{.eyebrow}<br>Section dividers {.dark-centered .center}
+
+Use `{.dark-centered .center}` on the header for a full-bleed navy divider.
+The amber eyebrow above the title is the `.eyebrow` class.
+
+# A title-style opener {.custom-title-slide .dark-centered .center}
+
+[Your Name]{.quarto-title-author-name}
+
+An `#`-level slide tagged `{.custom-title-slide}` nudges its `h1` and author name down by `5vh` and resizes them: an alternative title or section opener.
+
+## Three takeaways {.light-centered .center}
+
+{{< include resources/takeaways.qmd >}}
+
+## Merci de votre attention {.black-centered .center}

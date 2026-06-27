@@ -1,0 +1,7 @@
+Inline color via bracketed spans: `[text]{.teal}` and friends.
+
+[purple]{.purple} · [teal]{.teal} · [amber]{.amber} · [navy]{.navy} · [coral]{.coral} · [rose]{.rose} · [sage]{.sage} · [slate]{.slate} · [gold]{.gold} · [blue]{.blue}
+
+::: {.centered-container style="margin-top:0.8em;"}
+Background `#F8F7F0` · text `#564232` · headings `#5654A2` · links `#236257`
+:::

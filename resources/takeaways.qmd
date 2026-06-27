@@ -1,0 +1,11 @@
+::: {.dot-panel}
+::::: {.accent-card}
+[One]{.purple} visual system: a small palette, two fonts, three slide variants.
+:::::
+::::: {.accent-card}
+[Two]{.teal} authoring moves: include partials, tag with utility classes.
+:::::
+::::: {.accent-card}
+[Three]{.coral} signatures: dot-panel cards, traffic-light code, navy dividers.
+:::::
+:::

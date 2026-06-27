@@ -1,0 +1,35 @@
+project:
+  type: default
+  render:
+    - index.qmd
+  resources:
+    - figs/
+    - fonts/
+
+format:
+  revealjs:
+    theme: styles/slides.scss
+    css: fonts/fonts.css
+    width: 1050
+    height: 700
+    margin: 0.1
+    center: false
+    smaller: false
+    transition: none
+    background-transition: none
+    controls: false
+    progress: true
+    slide-number: c/t
+    auto-stretch: false
+    embed-resources: false
+    preview-links: auto
+    link-external-newwindow: true
+    link-external-icon: false
+    center-title-slide: true
+    code-block-height: 650px
+    code-line-numbers: false
+    footer: ""
+
+execute:
+  echo: false
+  warning: false

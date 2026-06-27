@@ -1,0 +1,326 @@
+/*-- scss:defaults --*/
+
+// === Typography ===
+$font-family-sans-serif: "Luciole", system-ui, sans-serif !default;
+$font-family-monospace: "Fira Code", ui-monospace, monospace !default;
+$presentation-font-size-root: 36px !default;
+$presentation-font-smaller: 0.75 !default;
+$presentation-line-height: 1.3 !default;
+
+// === Colors ===
+$body-bg: #f8f7f0 !default;
+$body-color: #564232 !default;
+$link-color: #236257 !default;
+$selection-color: inherit !default;
+$selection-bg: #c6d6e8 !default;
+
+// === Headings ===
+$presentation-heading-font: "Luciole", system-ui, sans-serif !default;
+$presentation-h1-font-size: 1.6em !default;
+$presentation-h2-font-size: 1.3em !default;
+$presentation-h3-font-size: 1.2em !default;
+$presentation-h4-font-size: 1.1em !default;
+$presentation-heading-color: #5654a2 !default;
+$presentation-heading-font-weight: 600 !default;
+
+// === Code Blocks ===
+$code-block-bg: #262624 !default;
+$code-block-font-size: 0.6em !default;
+
+// === Inline Code ===
+$code-color: #2c8475 !default;
+
+/*-- scss:rules --*/
+
+// === Named palette ===
+$purple: #5654a2;
+$teal: #2c8475;
+$teal-link: #236257;
+$teal-link-hover: #2c8475;
+$amber: #ffb84d;
+$navy: #2c3e50;
+$light-bg: #f8f7f0;
+$bubble-bg: #dfe4ff;
+$coral: #d45f47;
+$rose: #b5476a;
+$sage: #4a7a5a;
+$slate: #5a6b80;
+$gold: #c4881a;
+$blue: #3a7dc9;
+
+// === Fonts ===
+// Body/headings: Luciole, mono: Fira Code. Both self-hosted locally;
+// @font-face declarations live in fonts/fonts.css (loaded via the revealjs
+// `css` option) so url() resolves next to the woff2 files.
+
+// === Global ===
+:root {
+  --r-block-margin: 12px;
+}
+iframe {
+  margin-bottom: 0.5em;
+}
+th {
+  font-size: 24px;
+}
+.quarto-figure {
+  margin-bottom: 0;
+}
+
+// === Reveal.js base ===
+.reveal {
+  font-family: "Luciole", system-ui, sans-serif;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Luciole", system-ui, sans-serif;
+    code {
+      color: $teal;
+    }
+    a code {
+      color: inherit;
+    }
+  }
+
+  code,
+  pre,
+  pre code {
+    font-family: "Fira Code", ui-monospace, monospace;
+  }
+
+  a {
+    color: $teal-link !important;
+    &:hover {
+      color: $teal-link-hover !important;
+    }
+  }
+}
+
+// === Title slide ===
+.custom-title-slide {
+  h1 {
+    position: relative;
+    top: 5vh;
+    font-size: 1.3em !important;
+  }
+  .quarto-title-author-name {
+    position: relative;
+    top: 5vh;
+    font-size: 0.9em !important;
+  }
+}
+
+// === Slide variants ===
+.light-centered {
+  text-align: center;
+}
+.dark-centered {
+  background-color: $navy !important;
+  color: $light-bg !important;
+  text-align: center;
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: $light-bg !important;
+  }
+  code {
+    color: $amber;
+  }
+}
+#title-slide.dark-centered {
+  background-color: transparent !important;
+}
+.black-centered {
+  background-color: #222 !important;
+  color: $light-bg !important;
+  text-align: center;
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: $light-bg !important;
+  }
+  code {
+    color: $amber;
+  }
+}
+
+// === macOS traffic-light code window (signature, pure CSS) ===
+.reveal div.sourceCode {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #383835;
+  margin: 1.2em 0;
+  position: relative;
+  background-color: #262624;
+
+  &::before {
+    content: "";
+    display: block;
+    height: 36px;
+    background-color: #212120;
+    background-image:
+      radial-gradient(circle 6px at 22px 18px, #ff5f57 98%, transparent),
+      radial-gradient(circle 6px at 40px 18px, #febc2e 98%, transparent),
+      radial-gradient(circle 6px at 58px 18px, #28c840 98%, transparent);
+    background-repeat: no-repeat;
+  }
+
+  pre,
+  pre code {
+    background-color: #262624 !important;
+    color: #e8e4dc;
+  }
+  pre {
+    padding: 0.6em 1.2em 1em;
+    margin: 0;
+  }
+}
+
+// === Card panel (radial-dot background + left-accent cards) ===
+.dot-panel {
+  width: 90%;
+  margin: 0 auto;
+  background-image: radial-gradient(circle, #e0dbe5 0.6px, transparent 0.6px);
+  background-size: 18px 18px;
+  padding: 1.5em 1em;
+  border-radius: 18px;
+}
+.accent-card {
+  background: #ffffff;
+  border-left: 4px solid $purple;
+  border-radius: 0 12px 12px 0;
+  padding: 0.7em 1em;
+  text-align: left;
+  margin-bottom: 0.95em;
+  box-shadow: 0 4px 14px rgba(86, 84, 162, 0.08);
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// === Boxed containers ===
+.centered-container {
+  width: 300px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1em;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+.centered-container-dark {
+  @extend .centered-container;
+  background: $navy;
+  color: $light-bg;
+}
+
+// === Grid layouts ===
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+  align-items: stretch;
+}
+.four-by-three-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.8em;
+  .cell {
+    border: 2px solid $teal;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 0.6em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// === Speech bubbles ===
+.bubble-left,
+.bubble-top {
+  position: relative;
+  display: inline-block;
+  background: $bubble-bg;
+  color: $body-color;
+  border-radius: 14px;
+  padding: 0.6em 0.9em;
+}
+.bubble-left::after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 18px;
+  border: 8px solid transparent;
+  border-right-color: $bubble-bg;
+}
+.bubble-top::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 18px;
+  border: 8px solid transparent;
+  border-bottom-color: $bubble-bg;
+}
+
+// === Color utilities ===
+.purple {
+  color: $purple !important;
+}
+.teal {
+  color: $teal !important;
+}
+.amber {
+  color: $amber !important;
+}
+.navy {
+  color: $navy !important;
+}
+.coral {
+  color: $coral !important;
+}
+.rose {
+  color: $rose !important;
+}
+.sage {
+  color: $sage !important;
+}
+.slate {
+  color: $slate !important;
+}
+.gold {
+  color: $gold !important;
+}
+.blue {
+  color: $blue !important;
+}
+
+// === Misc helpers ===
+.small {
+  font-size: 0.7em;
+}
+.round-image img,
+img.round-image {
+  border-radius: 50%;
+  object-fit: cover;
+}
+.purple-border {
+  border: 2px solid $purple;
+}
+.img-middle img {
+  vertical-align: middle;
+  margin-right: 15px;
+}
+.eyebrow {
+  color: $amber;
+  font-size: 0.6em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}

@@ -1,0 +1,11 @@
+::: {.grid-container}
+::::: {.centered-container}
+**1**<br>[Visual system]{.purple}<br>colors, fonts, variants
+:::::
+::::: {.centered-container}
+**2**<br>[Components]{.teal}<br>cards, bubbles, grids
+:::::
+::::: {.centered-container}
+**3**<br>[Code & dividers]{.coral}<br>terminal windows, sections
+:::::
+:::

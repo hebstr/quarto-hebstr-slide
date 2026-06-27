@@ -1,0 +1,5 @@
+::: {.grid-container}
+[Wrap any text in `.bubble-left` for a tailed callout.]{.bubble-left}
+
+[Or `.bubble-top` for a tail on top.]{.bubble-top}
+:::
