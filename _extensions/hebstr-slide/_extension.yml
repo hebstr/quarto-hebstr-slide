@@ -30,7 +30,13 @@ contributes:
       slide-number: true
 
       auto-stretch: false
-      embed-resources: false
+
+      # A deck is something you send and present offline, so the default is a
+      # single self-contained file. self-contained-math is not redundant:
+      # embed-resources leaves MathJax and KaTeX out, for their size, and a deck
+      # with equations would render fine locally and break for an offline reader.
+      embed-resources: true
+      self-contained-math: true
       preview-links: false
       link-external-newwindow: true
       link-external-icon: false

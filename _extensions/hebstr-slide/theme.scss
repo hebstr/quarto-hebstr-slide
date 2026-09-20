@@ -1,5 +1,28 @@
 /*-- scss:defaults --*/
 
+// === Named palette ===
+// Colours are named once here, and every Quarto variable below is assigned to
+// a name rather than to a literal. Writing the same hex in both regions is what
+// made a change to the cream take two edits with nothing flagging the missed one.
+$purple: #5654a2 !default;
+$teal: #2c8475 !default;
+$amber: #ffb84d !default;
+$navy: #2c3e50 !default;
+$light-bg: #f8f7f0 !default;
+$brown: #564232 !default;
+$bubble-bg: #dfe4ff !default;
+$coral: #d45f47 !default;
+$rose: #b5476a !default;
+$sage: #4a7a5a !default;
+$slate: #5a6b80 !default;
+$gold: #c4881a !default;
+$blue: #3a7dc9 !default;
+
+// Links carry an underline because neither candidate colour reaches the 3:1
+// against body text that WCAG 1.4.1 requires of colour used as sole marker.
+// On a dark variant the purple drops to 1.67:1, so it inverts to its light form.
+$link-on-dark: $bubble-bg !default;
+
 // === Typography ===
 $font-family-sans-serif: "Luciole", system-ui, sans-serif !default;
 $font-family-monospace: "Fira Code", ui-monospace, monospace !default;
@@ -8,9 +31,9 @@ $presentation-font-smaller: 0.75 !default;
 $presentation-line-height: 1.3 !default;
 
 // === Colors ===
-$body-bg: #f8f7f0 !default;
-$body-color: #564232 !default;
-$link-color: #5654a2 !default;
+$body-bg: $light-bg !default;
+$body-color: $brown !default;
+$link-color: $purple !default;
 $selection-color: inherit !default;
 $selection-bg: #c6d6e8 !default;
 
@@ -20,7 +43,7 @@ $presentation-h1-font-size: 1.6em !default;
 $presentation-h2-font-size: 1.3em !default;
 $presentation-h3-font-size: 1.2em !default;
 $presentation-h4-font-size: 1.1em !default;
-$presentation-heading-color: #5654a2 !default;
+$presentation-heading-color: $purple !default;
 $presentation-heading-font-weight: 600 !default;
 
 // === Code Blocks ===
@@ -28,27 +51,9 @@ $code-block-bg: #262624 !default;
 $code-block-font-size: 0.6em !default;
 
 // === Inline Code ===
-$code-color: #2c8475 !default;
+$code-color: $teal !default;
 
 /*-- scss:rules --*/
-
-// === Named palette ===
-$purple: #5654a2;
-$teal: #2c8475;
-$amber: #ffb84d;
-$navy: #2c3e50;
-$light-bg: #f8f7f0;
-$bubble-bg: #dfe4ff;
-$coral: #d45f47;
-$rose: #b5476a;
-$sage: #4a7a5a;
-$slate: #5a6b80;
-$gold: #c4881a;
-$blue: #3a7dc9;
-
-// Links carry an underline because neither candidate colour reaches the 3:1
-// against body text that WCAG 1.4.1 requires of colour used as sole marker.
-$link-on-dark: $bubble-bg;
 
 // === Fonts ===
 // Body/headings: Luciole, mono: Fira Code. Both self-hosted locally;
