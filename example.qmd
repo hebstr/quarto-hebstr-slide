@@ -1,10 +1,16 @@
 ---
-pagetitle: "Pingfan-style Quarto template"
+pagetitle: "hebstr-slide"
 title: "[A Quarto revealjs template]{.amber}"
 subtitle: "Reproducing the Pingfan Hu slide style"
 author: "<br>**Your Name**<br>Your Institution<br><br>2026"
+format:
+  hebstr-slide-revealjs:
+    footer: ""
+execute:
+  echo: false
+  warning: false
 title-slide-attributes:
-  data-background-color: "#00254a"
+  data-background-color: "#2c3e50"
   class: dark-centered
   style: "text-align:left;"
 ---
@@ -31,8 +37,8 @@ title-slide-attributes:
 
 ## Code, the macOS way {.light-centered .center}
 
-A normal fenced code block renders as a traffic-light terminal window.
-No JavaScript is involved anywhere; the whole window is pure SCSS.
+A normal fenced code block renders as a traffic-light terminal window, drawn in SCSS alone.
+The line-number gutter is Pandoc's, recoloured rather than reimplemented, and the copy button is Quarto's, moved into the title bar.
 Line highlighting steps with `code-line-numbers`.
 
 ```python {code-line-numbers="|1-2"}

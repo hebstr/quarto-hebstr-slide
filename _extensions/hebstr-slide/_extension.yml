@@ -1,0 +1,43 @@
+title: hebstr-slide
+description: "A Quarto revealjs theme in the Pingfan Hu tradition, on Luciole and Fira Code"
+author: hebstr
+version: 0.1.0
+quarto-required: ">=1.6"
+contributes:
+  formats:
+    revealjs:
+      theme: theme.scss
+      css: fonts/fonts.css
+
+      # 16:10 canvas. Quarto's default 1050x700 (3:2) lets tall content spill
+      # into the invisible outer margin on a 16:10 display, which then extrudes
+      # past the slide card in overview mode.
+      width: 1280
+      height: 800
+      margin: 0.1
+      center: false
+      smaller: false
+
+      transition: none
+      background-transition: none
+
+      # Pinned on rather than left to `controls: auto`, which Quarto's
+      # quarto-support plugin resolves at runtime to
+      # `(inIframe && !localhost) || hasVerticalSlides`: a deck opened directly
+      # never gets arrows, and neither does one served from localhost.
+      controls: true
+      progress: true
+      slide-number: true
+
+      auto-stretch: false
+      embed-resources: false
+      preview-links: false
+      link-external-newwindow: true
+      link-external-icon: false
+      center-title-slide: true
+      code-block-height: 650px
+      code-line-numbers: false
+
+      # No title-slide-attributes here on purpose: the format must not force a
+      # title-slide look. A deck opts into the navy title with
+      # `data-background-color: "#2C3E50"` and `class: dark-centered`.

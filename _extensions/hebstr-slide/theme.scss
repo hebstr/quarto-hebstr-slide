@@ -10,7 +10,7 @@ $presentation-line-height: 1.3 !default;
 // === Colors ===
 $body-bg: #f8f7f0 !default;
 $body-color: #564232 !default;
-$link-color: #236257 !default;
+$link-color: #5654a2 !default;
 $selection-color: inherit !default;
 $selection-bg: #c6d6e8 !default;
 
@@ -35,8 +35,6 @@ $code-color: #2c8475 !default;
 // === Named palette ===
 $purple: #5654a2;
 $teal: #2c8475;
-$teal-link: #236257;
-$teal-link-hover: #2c8475;
 $amber: #ffb84d;
 $navy: #2c3e50;
 $light-bg: #f8f7f0;
@@ -48,6 +46,10 @@ $slate: #5a6b80;
 $gold: #c4881a;
 $blue: #3a7dc9;
 
+// Links carry an underline because neither candidate colour reaches the 3:1
+// against body text that WCAG 1.4.1 requires of colour used as sole marker.
+$link-on-dark: $bubble-bg;
+
 // === Fonts ===
 // Body/headings: Luciole, mono: Fira Code. Both self-hosted locally;
 // @font-face declarations live in fonts/fonts.css (loaded via the revealjs
@@ -57,19 +59,22 @@ $blue: #3a7dc9;
 :root {
   --r-block-margin: 12px;
 }
+
 iframe {
   margin-bottom: 0.5em;
 }
+
 th {
   font-size: 24px;
 }
+
 .quarto-figure {
   margin-bottom: 0;
 }
 
 // === Reveal.js base ===
 .reveal {
-  font-family: "Luciole", system-ui, sans-serif;
+  font-family: Luciole, system-ui, sans-serif;
 
   h1,
   h2,
@@ -77,10 +82,12 @@ th {
   h4,
   h5,
   h6 {
-    font-family: "Luciole", system-ui, sans-serif;
+    font-family: Luciole, system-ui, sans-serif;
+
     code {
       color: $teal;
     }
+
     a code {
       color: inherit;
     }
@@ -93,10 +100,18 @@ th {
   }
 
   a {
-    color: $teal-link !important;
+    color: $purple !important;
+
     &:hover {
-      color: $teal-link-hover !important;
+      color: color-mix(in srgb, #{$purple}, black 25%) !important;
     }
+  }
+
+  // Scoped to .slides so it reaches content links only: the slide number and
+  // the menu button are anchors too, and sit outside that subtree.
+  .slides a {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
   }
 }
 
@@ -107,6 +122,7 @@ th {
     top: 5vh;
     font-size: 1.3em !important;
   }
+
   .quarto-title-author-name {
     position: relative;
     top: 5vh;
@@ -118,39 +134,104 @@ th {
 .light-centered {
   text-align: center;
 }
+
 .dark-centered {
   background-color: $navy !important;
   color: $light-bg !important;
   text-align: center;
+
   h1,
   h2,
   h3,
   h4 {
     color: $light-bg !important;
   }
+
   code {
     color: $amber;
   }
+
+  a {
+    color: $link-on-dark !important;
+
+    &:hover {
+      color: $light-bg !important;
+    }
+  }
 }
+
 #title-slide.dark-centered {
   background-color: transparent !important;
 }
+
 .black-centered {
   background-color: #222 !important;
   color: $light-bg !important;
   text-align: center;
+
   h1,
   h2,
   h3,
   h4 {
     color: $light-bg !important;
   }
+
   code {
     color: $amber;
   }
+
+  a {
+    color: $link-on-dark !important;
+
+    &:hover {
+      color: $light-bg !important;
+    }
+  }
 }
 
-// === macOS traffic-light code window (signature, pure CSS) ===
+// === macOS traffic-light code window (signature) ===
+// The revealjs format puts the copy button outside div.sourceCode, in a
+// .code-copy-outer-scaffold wrapper, unlike the plain HTML format where it is
+// nested inside. The scaffold is therefore what carries the positioning
+// context that pulls the button into the title bar.
+.reveal .code-copy-outer-scaffold {
+  position: relative;
+
+  .code-copy-button-tooltip {
+    display: none;
+  }
+
+  .code-copy-button {
+    position: absolute;
+    top: 0;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    height: 36px;
+    padding: 0 10px;
+    border: none;
+    background: transparent;
+    color: #938e87;
+    font-family: "Fira Code", ui-monospace, monospace;
+    font-size: 0.75em;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: #e8e4dc;
+    }
+
+    i.bi {
+      display: none;
+    }
+
+    &::after {
+      content: "COPY";
+    }
+  }
+}
+
 .reveal div.sourceCode {
   border-radius: 10px;
   overflow: hidden;
@@ -176,9 +257,24 @@ th {
     background-color: #262624 !important;
     color: #e8e4dc;
   }
+
+  // border-box keeps the horizontal padding inside the window: on content-box
+  // it adds to a width reveal has already fixed, and the overflow shows up as
+  // a scrollbar drawn across the rounded bottom corners.
   pre {
+    box-sizing: border-box;
     padding: 0.6em 1.2em 1em;
     margin: 0;
+  }
+
+  // Pandoc supplies the line-number gutter, its counter and its
+  // user-select: none; only its light-ground colours are overridden here.
+  pre.numberSource {
+    border-left-color: #383835;
+  }
+
+  code > span > a:first-child::before {
+    color: #5a5955;
   }
 }
 
@@ -191,30 +287,45 @@ th {
   padding: 1.5em 1em;
   border-radius: 18px;
 }
+
 .accent-card {
-  background: #ffffff;
+  background: #fff;
   border-left: 4px solid $purple;
   border-radius: 0 12px 12px 0;
   padding: 0.7em 1em;
   text-align: left;
   margin-bottom: 0.95em;
-  box-shadow: 0 4px 14px rgba(86, 84, 162, 0.08);
+  box-shadow: 0 4px 14px rgb(86 84 162 / 8%);
+
   &:last-child {
     margin-bottom: 0;
   }
 }
 
 // === Boxed containers ===
-.centered-container {
+// A light container sitting on a dark slide has to restate its text colour:
+// the variant sets `color` on the section with !important, which otherwise
+// cascades into the card and leaves cream text on white.
+.dark-centered,
+.black-centered {
+  .centered-container,
+  .accent-card,
+  .dot-panel {
+    color: $body-color !important;
+  }
+}
+
+.centered-container,
+.centered-container-dark {
   width: 300px;
   margin: 0 auto;
-  background: #ffffff;
+  background: #fff;
   border-radius: 14px;
   padding: 1em;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 14px rgb(0 0 0 / 10%);
 }
+
 .centered-container-dark {
-  @extend .centered-container;
   background: $navy;
   color: $light-bg;
 }
@@ -227,15 +338,17 @@ th {
   justify-content: center;
   align-items: stretch;
 }
+
 .four-by-three-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 0.8em;
+
   .cell {
     border: 2px solid $teal;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
     padding: 0.6em;
     display: flex;
     align-items: center;
@@ -253,6 +366,7 @@ th {
   border-radius: 14px;
   padding: 0.6em 0.9em;
 }
+
 .bubble-left::after {
   content: "";
   position: absolute;
@@ -261,6 +375,7 @@ th {
   border: 8px solid transparent;
   border-right-color: $bubble-bg;
 }
+
 .bubble-top::after {
   content: "";
   position: absolute;
@@ -274,30 +389,39 @@ th {
 .purple {
   color: $purple !important;
 }
+
 .teal {
   color: $teal !important;
 }
+
 .amber {
   color: $amber !important;
 }
+
 .navy {
   color: $navy !important;
 }
+
 .coral {
   color: $coral !important;
 }
+
 .rose {
   color: $rose !important;
 }
+
 .sage {
   color: $sage !important;
 }
+
 .slate {
   color: $slate !important;
 }
+
 .gold {
   color: $gold !important;
 }
+
 .blue {
   color: $blue !important;
 }
@@ -306,18 +430,30 @@ th {
 .small {
   font-size: 0.7em;
 }
+
 .round-image img,
 img.round-image {
   border-radius: 50%;
   object-fit: cover;
 }
+
 .purple-border {
   border: 2px solid $purple;
 }
+
 .img-middle img {
   vertical-align: middle;
   margin-right: 15px;
 }
+
+// Carries a colour that only clears AA against a dark ground, such as $amber
+// at 1.6:1 on the cream body background.
+.pill-dark {
+  background: $navy;
+  border-radius: 6px;
+  padding: 0.05em 0.35em;
+}
+
 .eyebrow {
   color: $amber;
   font-size: 0.6em;
