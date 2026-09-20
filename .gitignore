@@ -18,3 +18,9 @@ __pycache__/
 
 # Claude
 .claude/
+
+# Awaiting the author's own read before it goes back public
+/README.md
+
+NOTES.md
+TODO.md
