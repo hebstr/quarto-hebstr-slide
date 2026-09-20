@@ -3,7 +3,7 @@
 **Warm, editorial palette.** Cream background, brown body text, purple headings, teal links and code.
 :::::
 ::::: {.accent-card}
-**One font does the heavy lifting.** [TsangerJinKai]{.purple} for prose and headings, [Maple Mono]{.teal} for code.
+**One font does the heavy lifting.** [Luciole]{.purple} for prose and headings, [Fira Code]{.teal} for code, both self-hosted.
 :::::
 ::::: {.accent-card}
 **Slides are HTML partials.** Each slide body is a single `{{< include >}}` of a `resources/*.qmd` file styled with named utility classes.

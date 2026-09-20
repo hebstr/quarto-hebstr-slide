@@ -1,7 +1,9 @@
 Inline color via bracketed spans: `[text]{.teal}` and friends.
 
-[purple]{.purple} · [teal]{.teal} · [amber]{.amber} · [navy]{.navy} · [coral]{.coral} · [rose]{.rose} · [sage]{.sage} · [slate]{.slate} · [gold]{.gold} · [blue]{.blue}
+[purple]{.purple} · [teal]{.teal} · [amber]{.amber .pill-dark} · [navy]{.navy} · [coral]{.coral} · [rose]{.rose} · [sage]{.sage} · [slate]{.slate} · [gold]{.gold} · [blue]{.blue}
+
+`.amber` sits on a dark pill because it only clears AA against a dark ground.
 
 ::: {.centered-container style="margin-top:0.8em;"}
-Background `#F8F7F0` · text `#564232` · headings `#5654A2` · links `#236257`
+Background `#F8F7F0` · text `#564232` · headings and links `#5654A2` · inline code `#2C8475`
 :::
